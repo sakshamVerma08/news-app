@@ -1,286 +1,8 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
 
 export class News extends Component {
-  // articles = [
-  //   {
-  //     source: { id: "espn", name: "ESPN" },
-  //     author: null,
-  //     title: "Núñez, Uruguay players jump in stands after loss - ESPN",
-  //     description:
-  //       "Darwin Núñez and about a dozen Uruguay teammates went into the stands as fans brawled at Bank of America Stadium following a 1-0 loss to Colombia in a Copa America semifinal on Wednesday night before security personnel stepped in.",
-  //     url: "https://www.espn.com/soccer/story/_/id/40537523/darwin-nunez-uruguay-enter-stands-copa-loss",
-  //     urlToImage:
-  //       "https://a.espncdn.com/combiner/i?img=%2Fphoto%2F2024%2F0711%2Fr1357219_1296x729_16%2D9.jpg",
-  //     publishedAt: "2024-07-11T02:48:00Z",
-  //     content:
-  //       "Jul 10, 2024, 10:48 PM ET\r\nDarwin Núñez and about a dozen Uruguay teammates went into the stands as fans brawled at Bank of America Stadium following Uruguay's 1-0 loss to Colombia in a Copa América … [+1963 chars]",
-  //   },
-  //   {
-  //     source: { id: "the-washington-post", name: "The Washington Post" },
-  //     author: "Hau Chu",
-  //     title:
-  //       "Baltimore bridge-collapse survivor recalls moment he plunged into river - The Washington Post",
-  //     description:
-  //       "Julio Cervantes Suarez recounted the March tragedy, which killed six construction workers, to NBC News in his first interview.",
-  //     url: "https://www.washingtonpost.com/dc-md-va/2024/07/10/baltimore-bridge-collapse-survivor-account/",
-  //     urlToImage:
-  //       "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/DP3ZKNXY2DFG3M4YK4KESIYV4E_size-normalized.JPG&w=1440",
-  //     publishedAt: "2024-07-11T02:45:03Z",
-  //     content:
-  //       "Julio Cervantes Suarez was sitting in his truck in the early hours of March 26, with six other construction workers in their own vehicles, as they took a break from fixing potholes on Baltimores Fran… [+2214 chars]",
-  //   },
-  //   {
-  //     source: { id: null, name: "Yahoo Entertainment" },
-  //     author: "Vincent Goodwill",
-  //     title:
-  //       "Team USA camp: Kawhi Leonard decision not surprising; Bam Adebayo still irked about DPOY - Yahoo Sports",
-  //     description:
-  //       "No one seems truly surprised by Kawhi Leonard's decision to pull out of the Olympics and focus on the upcoming NBA season.",
-  //     url: "https://sports.yahoo.com/team-usa-camp-kawhi-leonard-decision-not-surprising-bam-adebayo-still-irked-about-dpoy-185241692.html",
-  //     urlToImage:
-  //       "https://s.yimg.com/ny/api/res/1.2/xP3pZalcuo9CMTuNr8PPZQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04NzE-/https://s.yimg.com/os/creatr-uploaded-images/2024-07/557ce5a0-3eeb-11ef-bfcf-2d0e0fd34186",
-  //     publishedAt: "2024-07-11T02:42:00Z",
-  //     content:
-  //       "LAS VEGAS A lot of people were surprised to see Kawhi Leonard commit to Team USA for the Summer Olympics following his inability to finish the Los Angeles Clippers season, so no one seems truly surpr… [+4856 chars]",
-  //   },
-  //   {
-  //     source: { id: null, name: "BBC News" },
-  //     author: null,
-  //     title: "Archegos founder Bill Hwang found guilty of fraud - BBC.com",
-  //     description:
-  //       "The collapse of Archegos Capital Management caused billions of dollars in losses for several big banks.",
-  //     url: "https://www.bbc.com/news/articles/c80e47912z2o",
-  //     urlToImage:
-  //       "https://ichef.bbci.co.uk/news/1024/branded_news/1092/live/cb92e290-3f1c-11ef-9f5c-f516e57c7a58.jpg",
-  //     publishedAt: "2024-07-11T02:31:34Z",
-  //     content:
-  //       "A jury in New York has found the Wall Street investor, Sung Kook Bill Hwang, guilty of fraud and market manipulation.\r\nIt comes three years after the failure of his investment fund Archegos Capital M… [+1359 chars]",
-  //   },
-  //   {
-  //     source: { id: "cnn", name: "CNN" },
-  //     author: "Michael Williams",
-  //     title:
-  //       "George Clooney says Democrats need a new nominee just weeks after he headlined a major fundraiser for Biden - CNN",
-  //     description:
-  //       "The actor George Clooney, who had been among President Joe Biden’s biggest supporters and donors in Hollywood, called on Biden to bow out of the presidential race on Wednesday, just weeks after he hosted a major fundraiser for his reelection campaign.",
-  //     url: "https://www.cnn.com/2024/07/10/politics/george-clooney-joe-biden/index.html",
-  //     urlToImage:
-  //       "https://media.cnn.com/api/v1/images/stellar/prod/c-gettyimages-1706920765.jpg?c=16x9&q=w_800,c_fill",
-  //     publishedAt: "2024-07-11T02:09:00Z",
-  //     content:
-  //       "The actor George Clooney, who had been among President Joe Bidens biggest supporters and donors in Hollywood, called on Biden to bow out of the presidential race on Wednesday, just weeks after he hea… [+7431 chars]",
-  //   },
-  //   {
-  //     source: { id: null, name: "Salon" },
-  //     author: null,
-  //     title:
-  //       '"Last time you’re going to see me": Ellen DeGeneres to "disappear" after Netflix special - Salon',
-  //     description:
-  //       '"Last time you’re going to see me": Ellen DeGeneres to "disappear" after Netflix special',
-  //     url: "https://www.salon.com/2024/07/10/last-time-youre-going-to-see-me-ellen-degeneres-to-disappear-after-netflix-special/",
-  //     urlToImage:
-  //       "https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2024/07/ellen-degeneres-1441969531jpg.jpg",
-  //     publishedAt: "2024-07-11T01:58:00Z",
-  //     content: null,
-  //   },
-  //   {
-  //     source: { id: null, name: "Sports Illustrated" },
-  //     author: "Karl Rasmussen",
-  //     title:
-  //       "Steve Kerr Candidly Reflects on Klay Thompson Deciding to Leave Warriors - Sports Illustrated",
-  //     description:
-  //       "The longtime Golden State coach opened up on the veteran's departure from the Warriors.",
-  //     url: "https://www.si.com/nba/steve-kerr-candidly-reflects-klay-thompson-leaving-warriors",
-  //     urlToImage:
-  //       "https://images2.minutemediacdn.com/image/upload/c_crop,w_4200,h_2362,x_0,y_54/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/si/01j2fqhfkav7cene2bd3.jpg",
-  //     publishedAt: "2024-07-11T01:56:49Z",
-  //     content:
-  //       "The Golden State Warriors and Klay Thompson parted ways this offseason, 13 years after the organization drafted him with the No. 11 pick in the draft.\r\nStephen Curry admitted over the weekend that th… [+2030 chars]",
-  //   },
-  //   {
-  //     source: { id: "fox-news", name: "Fox News" },
-  //     author: "Brie Stimson",
-  //     title:
-  //       "New species of dinosaur that lived 125 million years ago identified in England - Fox News",
-  //     description:
-  //       "A new dinosaur species, Comptonatus chasei, the most complete skeleton found in England in 100 years, has been identified after it was found along country's southern coast.",
-  //     url: "https://www.foxnews.com/lifestyle/new-species-dinosaur-lived-125-million-years-ago-discovered-england",
-  //     urlToImage:
-  //       "https://static.foxnews.com/foxnews.com/content/uploads/2024/07/new-dinosaur-one.jpg",
-  //     publishedAt: "2024-07-11T01:51:00Z",
-  //     content:
-  //       "A new species of dinosaur has been identified in England. \r\nThe bones of Comptonatus chasei, a herbivore that lived 125 million years ago during the Cretaceous period, were first found on the Isle of… [+1512 chars]",
-  //   },
-  //   {
-  //     source: { id: "associated-press", name: "Associated Press" },
-  //     author: "ELLEN KNICKMEYER, LORNE COOK",
-  //     title:
-  //       "Ukraine is on an ‘irreversible’ path to NATO. But only after war with Russia ends - The Associated Press",
-  //     description:
-  //       "The 32-members of NATO are formally declaring that Ukraine is on an “irreversible” path to membership in the Western military alliance, offering a bare but more binding assurance of protection once its war with Russia ends. NATO member countries individually …",
-  //     url: "https://apnews.com/article/ukraine-nato-membership-summit-4156df4062e69e0da38e7c18bf657285",
-  //     urlToImage:
-  //       "https://dims.apnews.com/dims4/default/7e5716f/2147483647/strip/true/crop/5220x2936+0+272/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fe2%2F27%2F9fedfbb4d5ae2d7eb8e40cdb8176%2Fdb1fbd3507184b94b96afdc28d2d0472",
-  //     publishedAt: "2024-07-11T01:38:00Z",
-  //     content:
-  //       "WASHINGTON (AP) The 32-members of NATO on Wednesday formally declared Ukraine on an irreversible path to membership in the Western military alliance, offering a bare but more binding assurance of pro… [+7343 chars]",
-  //   },
-  //   {
-  //     source: { id: "the-washington-post", name: "The Washington Post" },
-  //     author:
-  //       "Leigh Ann Caldwell, Marianna Sotomayor, Jacqueline Alemany, Paul Kane",
-  //     title:
-  //       "Pelosi opens the door, subtly, to replacing Biden - The Washington Post",
-  //     description:
-  //       "Pelosi and other Hill leaders are looking for a way to delicately get Biden to step aside.",
-  //     url: "https://www.washingtonpost.com/politics/2024/07/10/nancy-pelosi-joe-biden-drop-out-congressional-democrats/",
-  //     urlToImage:
-  //       "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/B5V7MRWGOJTP64VKRNIPUQCJU4.jpg&w=1440",
-  //     publishedAt: "2024-07-11T00:55:39Z",
-  //     content:
-  //       "Former House speaker Nancy Pelosi delivered a very early wake-up call to Washington on Wednesday when she deftly sidestepped a straightforward question during a morning television interview: Should P… [+9293 chars]",
-  //   },
-  //   {
-  //     source: { id: null, name: "New York Post" },
-  //     author: "Samuel Chamberlain",
-  //     title:
-  //       "Vermont’s Peter Welch is first Democratic senator to call on Biden to end re-election bid - New York Post ",
-  //     description:
-  //       "Sen. Peter Welch became the first Democratic member of the upper chamber to call on President Biden to drop his re-election bid Wednesday night.",
-  //     url: "https://nypost.com/2024/07/10/us-news/vermonts-peter-welch-is-first-democratic-senator-to-call-on-biden-to-end-re-election-bid/",
-  //     urlToImage:
-  //       "https://nypost.com/wp-content/uploads/sites/2/2024/07/newspress-collage-apanlmbw8-1720654070603.jpg?quality=75&strip=all&1720639688&w=1024",
-  //     publishedAt: "2024-07-11T00:45:00Z",
-  //     content:
-  //       "Sen. Peter Welch became the first Democratic member of the upper chamber to call on President Biden to drop his re-election bid Wednesday night, writing that he “cannot unsee” the 81-year-old’s disas… [+3545 chars]",
-  //   },
-  //   {
-  //     source: { id: "ars-technica", name: "Ars Technica" },
-  //     author: "Stephen Clark",
-  //     title:
-  //       "Starliner still doesn’t have a return date as NASA tests overheating thrusters - Ars Technica",
-  //     description:
-  //       "“What we want to know is that the thrusters can perform,\" Starliner's pilot says.",
-  //     url: "https://arstechnica.com/space/2024/07/starliner-still-doesnt-have-a-return-date-as-nasa-tests-overheating-thrusters/",
-  //     urlToImage:
-  //       "https://cdn.arstechnica.net/wp-content/uploads/2024/07/53774161340_6f1e6d6570_5k-2-760x380.jpg",
-  //     publishedAt: "2024-07-11T00:30:12Z",
-  //     content:
-  //       "Enlarge/ Boeing's Starliner spacecraft on final approach to the International Space Station last month.\r\n56\r\nBefore clearing Boeing's Starliner crew capsule to depart the International Space Station … [+3294 chars]",
-  //   },
-  //   {
-  //     source: { id: "usa-today", name: "USA Today" },
-  //     author: "Brendan Morrow",
-  //     title:
-  //       "John Mulaney and Olivia Munn marry in a ceremony officiated by Sam Waterston - USA TODAY",
-  //     description:
-  //       "Comedian John Mulaney and actress Olivia Munn had a small wedding almost three years after welcoming their first child, Malcolm.",
-  //     url: "https://www.usatoday.com/story/entertainment/celebrities/2024/07/10/john-mulaney-olivia-munn-wedding/74354220007/",
-  //     urlToImage:
-  //       "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/07/10/USAT/74354454007-xxx-20240310-lbm-kvk-239.JPG?crop=5274,2967,x0,y0&width=3200&height=1801&format=pjpg&auto=webp",
-  //     publishedAt: "2024-07-11T00:24:28Z",
-  //     content:
-  //       'Congratulations are in order for John Mulaney and Olivia Munn.\r\nThe "New in Town" comedian, 41, and the "X-Men: Apocalypse" star, 44, were married in New York over the weekend, according to People an… [+2407 chars]',
-  //   },
-  //   {
-  //     source: { id: null, name: "Santa Rosa Press Democrat" },
-  //     author: "MARTIN ESPINOZA",
-  //     title:
-  //       "A summer surge of COVID infections is hitting the North Bay. Here’s why an expert calls it troubling - The Santa Rosa Press Democrat",
-  //     description:
-  //       "This year’s summer wave appears to be happening sooner than last year, according to the latest available local wastewater surveillance data.",
-  //     url: "https://www.pressdemocrat.com/article/news/covid-surge-north-bay/",
-  //     urlToImage:
-  //       "https://imengine.prod.srp.navigacloud.com/?uuid=364576d3-1bc7-5a77-8a87-aa580809327f&type=primary&q=75&width=1200",
-  //     publishedAt: "2024-07-11T00:01:45Z",
-  //     content:
-  //       "The North Bay is experiencing a summer surge in COVID-19 infections, in part driven by highly contagious FLiRT subvariant and low vaccination rates, local health experts on Wednesday said.\r\nDr. Tanya… [+3867 chars]",
-  //   },
-  //   {
-  //     source: { id: null, name: "Billboard" },
-  //     author: "Bill Donahue",
-  //     title:
-  //       "Ex-Red Hot Chili Peppers Guitarist Josh Klinghoffer Faces Wrongful Death Lawsuit Over Car Incident - Billboard",
-  //     description:
-  //       "Ex-Red Hot Chili Peppers guitarist Josh Klinghoffer has been sued for wrongful death over claims that he hit and killed a pedestrian with his car.",
-  //     url: "http://www.billboard.com/pro/ex-red-hot-chili-peppers-guitarist-klinghoffer-sued-wrongful-death/",
-  //     urlToImage:
-  //       "https://www.billboard.com/wp-content/uploads/2024/07/Josh-Klinghoffer-janes-addiction-las-vegas-2023-billboard-1548.jpg?w=1024",
-  //     publishedAt: "2024-07-10T23:04:51Z",
-  //     content:
-  //       "Josh Klinghoffer, a former guitarist for the Red Hot Chili Peppers, is facing a wrongful death lawsuit over allegations that he struck and killed a pedestrian near Los Angeles earlier this year due t… [+2297 chars]",
-  //   },
-  //   {
-  //     source: { id: "associated-press", name: "Associated Press" },
-  //     author: "ALI SWENSON, FARNOUSH AMIRI",
-  //     title:
-  //       "House passes GOP bill requiring proof of citizenship to vote, boosting election-year talking point - The Associated Press",
-  //     description:
-  //       "The House has passed a bill requiring proof of U.S. citizenship for voter registration. It’s legislation Republicans have prioritized as an election-year talking point even as research shows noncitizens illegally registering and casting ballots in federal ele…",
-  //     url: "https://apnews.com/article/congress-voting-migrants-citizenship-elections-republicans-8056bde9ea64b13fd20985d56a6a0fde",
-  //     urlToImage:
-  //       "https://dims.apnews.com/dims4/default/c302d11/2147483647/strip/true/crop/6048x3402+0+311/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fbc%2F7b%2F90be50388fe9dfff23192da7b40e%2F2fba6f5984eb4a72a21d43b9f69324b6",
-  //     publishedAt: "2024-07-10T22:43:00Z",
-  //     content:
-  //       "WASHINGTON (AP) The House on Wednesday passed a proof-of-citizenship requirement for voter registration, a proposal Republicans have prioritized as an election-year talking point even as research sho… [+7688 chars]",
-  //   },
-  //   {
-  //     source: { id: "cnn", name: "CNN" },
-  //     author: "Elisabeth Buchwald",
-  //     title:
-  //       "Costco membership fees are going up for the first time since 2017 - CNN",
-  //     description:
-  //       "It’s soon going to cost more money to get your foot in the door at Costco. But the good news is your hot dog is still $1.50 — for now at least.",
-  //     url: "https://www.cnn.com/2024/07/10/business/costco-membership-fee-increase/index.html",
-  //     urlToImage:
-  //       "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2158913274.jpg?c=16x9&q=w_800,c_fill",
-  //     publishedAt: "2024-07-10T22:42:00Z",
-  //     content:
-  //       "Its soon going to cost more money to get your foot in the door at Costco. But the good news is your hot dog is still $1.50 for now at least.\r\nThe retailer is raising membership fees by $5 to $65 a ye… [+1204 chars]",
-  //   },
-  //   {
-  //     source: { id: "mashable", name: "Mashable" },
-  //     author: "Matt Binder",
-  //     title:
-  //       "Samsung criticized for 'cloning' Apple products after Galaxy Unpacked event - Mashable",
-  //     description: 'Products are being called "copycats."',
-  //     url: "https://mashable.com/article/samsung-galaxy-watch-ultra-buds-3-apple-clones-unpacked-2024",
-  //     urlToImage:
-  //       "https://helios-i.mashable.com/imagery/articles/00lNM48wKyB9ZcJp4GfRbss/hero-image.fill.size_1200x675.v1720647751.jpg",
-  //     publishedAt: "2024-07-10T22:11:08Z",
-  //     content: null,
-  //   },
-  //   {
-  //     source: { id: "ars-technica", name: "Ars Technica" },
-  //     author: "Dan Goodin",
-  //     title:
-  //       "Threat actors exploited Windows 0-day for more than a year before Microsoft fixed it - Ars Technica",
-  //     description:
-  //       "The goal of the exploits was to open Explorer and trick targets into running malicious code.",
-  //     url: "https://arstechnica.com/security/2024/07/threat-actors-exploited-windows-0-day-for-more-than-a-year-before-microsoft-fixed-it/",
-  //     urlToImage:
-  //       "https://cdn.arstechnica.net/wp-content/uploads/2023/06/malware-760x380.jpg",
-  //     publishedAt: "2024-07-10T21:44:12Z",
-  //     content:
-  //       "36\r\nThreat actors carried out zero-day attacks that targeted Windows users with malware for more than a year before Microsoft fixed the vulnerability that made them possible, researchers said Tuesday… [+3817 chars]",
-  //   },
-  //   {
-  //     source: { id: "fox-sports", name: "Fox Sports" },
-  //     author: "Doug McIntyre",
-  //     title:
-  //       "Sources: Gregg Berhalter out as USMNT head coach following Copa América group stage exit - FOX Sports",
-  //     description:
-  //       "A little more than a week after the USMNT became the first Copa América host to be eliminated in the group stage of the world's oldest international tournament, Gregg Berhalter will no longer be the team's head coach, multiple sources tell FOX Sports.",
-  //     url: "https://www.foxsports.com/stories/soccer/sources-gregg-berhalter-out-usmnt-head-coach-following-copa-america-group-stage-exit",
-  //     urlToImage:
-  //       "https://a57.foxsports.com/statics.foxsports.com/www.foxsports.com/content/uploads/2024/07/1408/814/9186757d-usmnt1.jpg?ve=1&tl=1",
-  //     publishedAt: "2024-07-10T21:17:46Z",
-  //     content:
-  //       "A little more than a week after the United States men's national team became the first Copa América host to be eliminated in the group stage of the world's oldest international tournament, Gregg Berh… [+2058 chars]",
-  //   },
-  // ];
-
   constructor(props) {
     super(props);
     this.state = {
@@ -288,44 +10,47 @@ export class News extends Component {
       loading: false,
       page: 1,
     };
-
-    console.log("mode = " + this.props.mode + "\n" + this.props.modeText);
   }
 
   async componentDidMount() {
-    let url =
-      "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=1c25bff69eb04ec897bfe32b7ef6cb2d&page=1&pageSize=20";
+    let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=1c25bff69eb04ec897bfe32b7ef6cb2d&page=1&pageSize=${this.props.pageSize}`;
+    this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
+      loading: false,
     });
   }
 
   handlePrevClick = async () => {
-    console.log("Previous");
     let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=1c25bff69eb04ec897bfe32b7ef6cb2d&page=${
       this.state.page - 1
-    }&pageSiz=20`;
+    }&pageSize=${this.props.pageSize}`;
+    this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
-    this.setState({ articles: parsedData.articles, page: this.state.page - 1 });
+    this.setState({
+      articles: parsedData.articles,
+      page: this.state.page - 1,
+      loading: false,
+    });
   };
 
   handleNextClick = async () => {
-    console.log("Next");
-
     if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
     } else {
       let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=1c25bff69eb04ec897bfe32b7ef6cb2d&page=${
         this.state.page + 1
-      }&pageSize=20`;
+      }&pageSize=${this.props.pageSize}`;
+      this.setState({ loading: true });
       let data = await fetch(url);
       let parsedData = await data.json();
       this.setState({
         articles: parsedData.articles,
         page: this.state.page + 1,
+        loading: false,
       });
     }
   };
@@ -337,34 +62,36 @@ export class News extends Component {
           className="container my-3"
           style={{ color: this.props.mode === "light" ? "black" : "white" }}
         >
-          <h1>NewsMonkey - Top Headlines</h1>
+          <h1 className="text-center">NewsMonkey - Top Headlines</h1>
+          {this.state.loading && <Spinner />}
 
           <div className="row">
-            {this.state.articles?.map((element) => {
-              return (
-                <div className="col-md-4" key={element.url}>
-                  <NewsItem
-                    title={element.title ? element.title.slice(0, 45) : ""}
-                    description={
-                      element.description
-                        ? element.description.slice(0, 88)
-                        : ""
-                    }
-                    imageUrl={element.urlToImage}
-                    newsUrl={element.url}
-                    mode={this.props.mode}
-                    modeText={this.props.modeText}
-                  />
-                </div>
-              );
-            })}
+            {!this.state.loading &&
+              this.state.articles?.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={element.title ? element.title.slice(0, 45) : ""}
+                      description={
+                        element.description
+                          ? element.description.slice(0, 88)
+                          : ""
+                      }
+                      imageUrl={element.urlToImage}
+                      newsUrl={element.url}
+                      mode={this.props.mode}
+                      modeText={this.props.modeText}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </div>
         <div className="container d-flex justify-content-between">
           <button
             type="button"
             className={`btn btn-${
-              this.state.mode === "light" ? "primary" : "light"
+              this.props.mode === "light" ? "primary" : "light"
             }`}
             onClick={this.handlePrevClick}
             disabled={this.state.page <= 1}
@@ -373,8 +100,14 @@ export class News extends Component {
           </button>
           <button
             type="button"
-            className="btn btn-dark"
+            className={`btn btn-${
+              this.props.mode === "light" ? "primary" : "light"
+            }`}
             onClick={this.handleNextClick}
+            disabled={
+              this.state.page + 1 >
+              Math.ceil(this.state.totalResults / this.props.pageSize)
+            }
           >
             Next &rarr;
           </button>

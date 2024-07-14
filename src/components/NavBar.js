@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 export class NavBar extends Component {
-
   render() {
     return (
       <div>
@@ -11,7 +10,11 @@ export class NavBar extends Component {
           }`}
         >
           <div className="container-fluid">
-            <a className="navbar-brand" href="/" style = {{color: this.props.mode === "light"?"black":"white"}}>
+            <a
+              className="navbar-brand"
+              href="/"
+              style={{ color: this.props.mode === "light" ? "black" : "white" }}
+            >
               NewsMonkey
             </a>
             <button
@@ -31,12 +34,25 @@ export class NavBar extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/" style = {{color: this.props.mode === "light"?"black":"white"}}>
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="/"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
                     Home
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/about" style = {{color: this.props.mode === "light"?"black":"white"}}>
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
                     About
                   </a>
                 </li>
@@ -47,9 +63,8 @@ export class NavBar extends Component {
                 id="modeButton"
                 onClick={this.props.toggleModes}
               >
-
-             {this.props.capitalize(this.props.modeText)}
-             </button>
+                {this.props.capitalize(this.props.modeText)}
+              </button>
             </div>
           </div>
         </nav>

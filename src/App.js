@@ -2,6 +2,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import React, { Component } from "react";
 import News from "./components/News";
+import Alert from "./components/Alert";
 
 export default class App extends Component {
   constructor() {
@@ -9,19 +10,19 @@ export default class App extends Component {
     this.state = { mode: "light", modeText: "dark" };
   }
 
-  showAlert = (currentMode, alertType) => {
-    return (
-      <div class={`alert alert-${alertType}`} role="alert">
-        {currentMode} has been Enabled
-      </div>
-    );
-  };
-
   capitalize = (modeText) => {
     let newMode =
-      modeText[0].toUpperCase() +
-      modeText.slice(1, modeText.length + 1);
+      modeText[0].toUpperCase() + modeText.slice(1, modeText.length + 1);
     return newMode;
+  };
+
+  showAlert = (currentMode, alertType) => {
+    <Alert
+      currentMode={currentMode}
+      alertType={alertType}
+      capitalize={this.capitalize}
+    />;
+    console.log("Method Alert has been called");
   };
 
   toggleModes = () => {
@@ -56,11 +57,17 @@ export default class App extends Component {
       <div>
         <NavBar
           mode={this.state.mode}
+          showAlert={this.showAlert}
           modeText={this.state.modeText}
           capitalize={this.capitalize}
           toggleModes={this.toggleModes}
         />
-        <News mode={this.state.mode} modeText={this.state.modeText} />
+
+        <News
+          mode={this.state.mode}
+          modeText={this.state.modeText}
+          pageSize={6}
+        />
       </div>
     );
   }
