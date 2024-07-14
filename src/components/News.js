@@ -333,8 +333,11 @@ export class News extends Component {
   render() {
     return (
       <>
-        <div className="container my-3">
-          <h2>NewsMonkey - Top Headlines</h2>
+        <div
+          className="container my-3"
+          style={{ color: this.props.mode === "light" ? "black" : "white" }}
+        >
+          <h1>NewsMonkey - Top Headlines</h1>
 
           <div className="row">
             {this.state.articles?.map((element) => {

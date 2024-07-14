@@ -17,6 +17,13 @@ export default class App extends Component {
     );
   };
 
+  capitalize = (modeText) => {
+    let newMode =
+      modeText[0].toUpperCase() +
+      modeText.slice(1, modeText.length + 1);
+    return newMode;
+  };
+
   toggleModes = () => {
     let buttonArr = Array.from(document.getElementsByClassName("btn"));
     // changing from light ---> dark
@@ -47,7 +54,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <NavBar mode={this.state.mode} modeText={this.state.modeText} />
+        <NavBar
+          mode={this.state.mode}
+          modeText={this.state.modeText}
+          capitalize={this.capitalize}
+          toggleModes={this.toggleModes}
+        />
         <News mode={this.state.mode} modeText={this.state.modeText} />
       </div>
     );
