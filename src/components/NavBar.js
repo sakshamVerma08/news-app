@@ -3,52 +3,18 @@ import React, { Component } from "react";
 export class NavBar extends Component {
   constructor() {
     super();
-
-    this.state = { mode: "light" };
-  }
-
-  showAlert = (currentMode, alertType) => {
-    return (
-      <div class={`alert alert-${alertType}`} role="alert">
-        {currentMode} has been Enabled
-      </div>
+    console.log(
+      "mode = " + this.props.mode + `\nmodeText = ${this.props.modeText}`
     );
-  };
-
-  /* const toggleModes = () => {
-    let buttonArr = document.getElementsByClassName("btn");
-   
-
-    if (this.state.mode === "light") {
-      document.body.style.backgroundColor = "rgb(14, 18, 27)";
-      this.setState({ mode: "dark" });
-      this.showAlert(this.state.mode, "success");
-
-      // buttonArr.forEach((button) => {
-      //   button.classList.remove("btn-dark");
-      //   button.classLlist.add("btn-light");
-      // });
-    }
-    // changing from dark to light mode
-    else {
-      document.body.style.backgroundColor = "white";
-      this.setState({ mode: "light" });
-      this.showAlert(this.state.mode, "success");
-      buttonArr.forEach((button) => {
-        button.classList.remove("btn-light");
-        button.classList.add("btn-dark");
-      });
-    }
-  };*/
-
-  capitalize = (mode) => {
-    let newMode = mode[0].toUpperCase() + mode.slice(1, this.state.mode.length);
-    return newMode;
-  };
+  }
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav
+          className={`navbar navbar-expand-lg bg-${
+            this.props.mode === "light" ? "light" : "secondary"
+          }`}
+        >
           <div className="container-fluid">
             <a className="navbar-brand" href="/">
               NewsMonkey
@@ -81,8 +47,12 @@ export class NavBar extends Component {
                 </li>
               </ul>
 
-              <button className="btn btn-dark" id="modeButton">
-                {this.capitalize(this.state.mode)}
+              <button
+                className="btn btn-dark"
+                id="this.props.modeButton"
+                onClick={this.togglethis.props.modes}
+              >
+                {this.capitalize(this.props.this.props.modeText)}
               </button>
             </div>
           </div>

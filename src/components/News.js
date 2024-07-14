@@ -281,13 +281,15 @@ export class News extends Component {
   //   },
   // ];
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: this.articles,
       loading: false,
       page: 1,
     };
+
+    console.log("mode = " + this.props.mode + "\n" + this.props.modeText);
   }
 
   async componentDidMount() {
@@ -347,6 +349,8 @@ export class News extends Component {
                     }
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
+                    mode={this.props.mode}
+                    modeText={this.props.modeText}
                   />
                 </div>
               );
@@ -356,7 +360,9 @@ export class News extends Component {
         <div className="container d-flex justify-content-between">
           <button
             type="button"
-            className="btn btn-dark"
+            className={`btn btn-${
+              this.state.mode === "light" ? "primary" : "light"
+            }`}
             onClick={this.handlePrevClick}
             disabled={this.state.page <= 1}
           >

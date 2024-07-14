@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 
-// USE PROPS TO BRING MODETEXT STATE FROM NAVBAR COMPONENT
+// USE PROPS TO BRING MODE STATE FROM NAVBAR COMPONENT
 
 export class NewsItem extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl } = this.props;
-
+    let { title, description, imageUrl, newsUrl, mode } = this.props;
     return (
       <div className="my-3">
-        <div className="card" style={{ width: "18rem" }}>
+        <div
+          className={`card bg-${
+            this.props.mode === "light" ? "light" : "secondary"
+          }`}
+          style={{
+            width: "18rem",
+            color: this.props.mode === "light" ? "black" : "white",
+          }}
+        >
           <img
             src={
               !imageUrl
@@ -25,7 +32,9 @@ export class NewsItem extends Component {
               href={newsUrl}
               rel="noreferrer"
               target="_blank"
-              className={`btn btn-sm btn-dark`}
+              className={`btn btn-sm btn-${
+                this.props.mode === "light" ? "primary" : "dark"
+              }`}
             >
               Read More
             </a>
