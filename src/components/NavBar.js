@@ -1,6 +1,50 @@
 import React, { Component } from "react";
 
 export class NavBar extends Component {
+  constructor() {
+    super();
+
+    this.state = { mode: "light" };
+  }
+
+  showAlert = (currentMode, alertType) => {
+    return (
+      <div class={`alert alert-${alertType}`} role="alert">
+        {currentMode} has been Enabled
+      </div>
+    );
+  };
+
+  /* const toggleModes = () => {
+    let buttonArr = document.getElementsByClassName("btn");
+   
+
+    if (this.state.mode === "light") {
+      document.body.style.backgroundColor = "rgb(14, 18, 27)";
+      this.setState({ mode: "dark" });
+      this.showAlert(this.state.mode, "success");
+
+      // buttonArr.forEach((button) => {
+      //   button.classList.remove("btn-dark");
+      //   button.classLlist.add("btn-light");
+      // });
+    }
+    // changing from dark to light mode
+    else {
+      document.body.style.backgroundColor = "white";
+      this.setState({ mode: "light" });
+      this.showAlert(this.state.mode, "success");
+      buttonArr.forEach((button) => {
+        button.classList.remove("btn-light");
+        button.classList.add("btn-dark");
+      });
+    }
+  };*/
+
+  capitalize = (mode) => {
+    let newMode = mode[0].toUpperCase() + mode.slice(1, this.state.mode.length);
+    return newMode;
+  };
   render() {
     return (
       <div>
@@ -36,6 +80,10 @@ export class NavBar extends Component {
                   </a>
                 </li>
               </ul>
+
+              <button className="btn btn-dark" id="modeButton">
+                {this.capitalize(this.state.mode)}
+              </button>
             </div>
           </div>
         </nav>
