@@ -56,8 +56,88 @@ export class NavBar extends Component {
                     About
                   </a>
                 </li>
+
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    General
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    Business
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    Entertainment
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    Science
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    Sports
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    Technology
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/about"
+                    style={{
+                      color: this.props.mode === "light" ? "black" : "white",
+                    }}
+                  >
+                    Help
+                  </a>
+                </li>
               </ul>
 
+              {/* DARK MODE BUTTON */}
+              {/* ***************************************  */}
               <button
                 className="btn btn-dark"
                 id="modeButton"
@@ -65,6 +145,7 @@ export class NavBar extends Component {
               >
                 {this.props.capitalize(this.props.modeText)}
               </button>
+              {/* ************************************************ */}
             </div>
           </div>
         </nav>

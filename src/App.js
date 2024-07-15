@@ -7,7 +7,12 @@ import Alert from "./components/Alert";
 export default class App extends Component {
   constructor() {
     super();
-    this.state = { mode: "light", modeText: "dark" };
+    this.state = {
+      mode: "light",
+      modeText: "dark",
+      // alert: { alertMessage: null, alertType: null },
+      alert: null,
+    };
   }
 
   capitalize = (modeText) => {
@@ -17,21 +22,20 @@ export default class App extends Component {
   };
 
   showAlert = (currentMode, alertType) => {
-    <Alert
-      currentMode={currentMode}
-      alertType={alertType}
-      capitalize={this.capitalize}
-    />;
-    console.log("Method Alert has been called");
+    let message = `${this.capitalize(currentMode)} Mode has been Enabled !`;
+    this.setState({ alert: { alertMessage: message, alertType: alertType } });
+    setTimeout(() => {
+      this.setState({ alert: { alertMessage: null, alertType: null } });
+    }, 2000);
   };
 
   toggleModes = () => {
     let buttonArr = Array.from(document.getElementsByClassName("btn"));
     // changing from light ---> dark
     if (this.state.modeText === "dark") {
-      document.body.style.backgroundColor = "rgb(31, 35, 42)";
       this.setState({ mode: "dark", modeText: "light" });
-      this.showAlert(this.state.mode, "success");
+      document.body.style.backgroundColor = "rgb(31, 35, 42)";
+      this.showAlert(this.state.modeText, "success");
       buttonArr.forEach((button) => {
         button.classList.remove("btn-primary");
         button.classList.add("btn-dark");
@@ -39,17 +43,17 @@ export default class App extends Component {
     }
     // changing from dark ---> light
     else {
-      document.body.style.backgroundColor = "white";
-      Array.from(
-        document.getElementsByClassName("navbar")
-      )[0].classList.remove();
-      Array.from(document.getElementsByClassName("navbar"))[0].classList.add();
       this.setState({ mode: "light", modeText: "dark" });
+      document.body.style.backgroundColor = "white";
+      this.showAlert(this.state.modeText, "success");
+      // Array.from(
+      //   document.getElementsByClassName("navbar")
+      // )[0].classList.remove();
+      // Array.from(document.getElementsByClassName("navbar"))[0].classList.add();
       buttonArr.forEach((button) => {
         button.classList.remove("btn-dark");
         button.classList.add("btn-primary");
       });
-      this.showAlert(this.state.mode, "success");
     }
   };
   render() {
@@ -63,8 +67,12 @@ export default class App extends Component {
           toggleModes={this.toggleModes}
         />
 
+        <Alert alert={this.state.alert} />
+
         <News
           mode={this.state.mode}
+          country="in"
+          category = "general"
           modeText={this.state.modeText}
           pageSize={6}
         />

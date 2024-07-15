@@ -12,7 +12,6 @@ export class NewsItem extends Component {
             this.props.mode === "light" ? "light" : "secondary"
           }`}
           style={{
-            width: "18rem",
             color: this.props.mode === "light" ? "black" : "white",
           }}
         >
