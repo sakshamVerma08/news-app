@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 export class NavBar extends Component {
   render() {
     return (
@@ -10,13 +10,13 @@ export class NavBar extends Component {
           }`}
         >
           <div className="container-fluid">
-            <a
+            <Link
               className="navbar-brand"
-              href="/"
+              to="/general"
               style={{ color: this.props.mode === "light" ? "black" : "white" }}
             >
               NewsMonkey
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -34,107 +34,109 @@ export class NavBar extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link active"
                     aria-current="page"
-                    href="/"
+                    to="/general"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
+                    to="/about"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     About
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
-                    style={{
-                      color: this.props.mode === "light" ? "black" : "white",
-                    }}
-                  >
-                    General
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href="/about"
+                    to="/business"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Business
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
+                    to="/entertainment"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Entertainment
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
+                    to="/science"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Science
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
+                    to="/sports"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Sports
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
+                    to="/technology"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Technology
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/about"
+                    to="/help"
                     style={{
                       color: this.props.mode === "light" ? "black" : "white",
                     }}
                   >
                     Help
-                  </a>
+                  </Link>
                 </li>
               </ul>
+
+              {/* COUNTRY INPUT BUTTON */}
+              <div className="form-group mx-5">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter your Country"
+                />
+              </div>
+
+              {/* ******************************************** */}
 
               {/* DARK MODE BUTTON */}
               {/* ***************************************  */}
