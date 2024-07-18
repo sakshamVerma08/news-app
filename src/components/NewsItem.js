@@ -4,7 +4,8 @@ import React, { Component } from "react";
 
 export class NewsItem extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl } = this.props;
+    let { title, description, imageUrl, newsUrl, author, date, mode, source } =
+      this.props;
     return (
       <div className="my-3">
         <div
@@ -15,6 +16,12 @@ export class NewsItem extends Component {
             color: this.props.mode === "light" ? "black" : "white",
           }}
         >
+          <span
+            style={{ left: "90%", zIndex: "1" }}
+            className="position-absolute top-0  translate-middle badge rounded-pill bg-danger"
+          >
+            {source}
+          </span>
           <img
             src={
               !imageUrl
@@ -27,6 +34,16 @@ export class NewsItem extends Component {
           <div className="card-body">
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{description}...</p>
+            <p
+              className="card-text"
+              style={{ color: mode === "light" ? "black" : "white" }}
+            >
+              <small>
+                By- {!author ? "Unknown" : author} On -{" "}
+                {new Date(date).toGMTString()}
+              </small>
+            </p>
+
             <a
               href={newsUrl}
               rel="noreferrer"

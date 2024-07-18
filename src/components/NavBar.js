@@ -125,19 +125,6 @@ export class NavBar extends Component {
                 </li>
               </ul>
 
-              {/* COUNTRY INPUT BUTTON */}
-              <div className="form-group mx-5">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter your Country"
-                />
-              </div>
-
-              {/* ******************************************** */}
-
               {/* DARK MODE BUTTON */}
               {/* ***************************************  */}
               <button

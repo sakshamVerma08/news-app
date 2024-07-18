@@ -60,6 +60,8 @@ export default class App extends Component {
       });
     }
   };
+
+  pageSize = 12;
   render() {
     return (
       <div>
@@ -75,6 +77,20 @@ export default class App extends Component {
           <Alert alert={this.state.alert} />
 
           <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <News
+                  key="general"
+                  mode={this.state.mode}
+                  country="in"
+                  category="general"
+                  modeText={this.state.modeText}
+                  pageSize={this.pageSize}
+                />
+              }
+            />
             <Route exact path="/about" element={<About />} />
 
             <Route
@@ -87,7 +103,7 @@ export default class App extends Component {
                   country="in"
                   category="general"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
@@ -102,7 +118,7 @@ export default class App extends Component {
                   country="in"
                   category="business"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
@@ -116,7 +132,7 @@ export default class App extends Component {
                   country="in"
                   category="entertainment"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
@@ -130,7 +146,7 @@ export default class App extends Component {
                   country="in"
                   category="technology"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
@@ -144,7 +160,7 @@ export default class App extends Component {
                   country="in"
                   category="sports"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
@@ -160,7 +176,7 @@ export default class App extends Component {
                   country="in"
                   category="health"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
@@ -174,7 +190,7 @@ export default class App extends Component {
                   country="in"
                   category="science"
                   modeText={this.state.modeText}
-                  pageSize={6}
+                  pageSize={this.pageSize}
                 />
               }
             />
