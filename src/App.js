@@ -7,6 +7,7 @@ import Alert from "./components/Alert";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/About";
 import Help from "./components/Help";
+import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
   constructor() {
@@ -16,8 +17,13 @@ export default class App extends Component {
       modeText: "dark",
       // alert: { alertMessage: null, alertType: null },
       alert: null,
+      progress: 0,
     };
   }
+
+  setProgress = (progress) => {
+    this.setState({ progress: progress });
+  };
 
   capitalize = (modeText) => {
     let newMode =
@@ -38,7 +44,7 @@ export default class App extends Component {
     // changing from light ---> dark
     if (this.state.modeText === "dark") {
       this.setState({ mode: "dark", modeText: "light" });
-      document.body.style.backgroundColor = "rgb(31, 35, 42)";
+      document.body.style.backgroundColor = "rgb(0 0 0 / 90%)";
       this.showAlert(this.state.modeText, "success");
       buttonArr.forEach((button) => {
         button.classList.remove("btn-primary");
@@ -66,6 +72,11 @@ export default class App extends Component {
     return (
       <div>
         <Router>
+          <LoadingBar
+            color="#f11946"
+            progress={this.state.progress}
+            height={"2.2px"}
+          />
           <NavBar
             mode={this.state.mode}
             showAlert={this.showAlert}
@@ -82,6 +93,7 @@ export default class App extends Component {
               path="/"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="general"
                   mode={this.state.mode}
                   country="in"
@@ -98,6 +110,7 @@ export default class App extends Component {
               path="/general"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="general"
                   mode={this.state.mode}
                   country="in"
@@ -113,6 +126,7 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="business"
                   mode={this.state.mode}
                   country="in"
@@ -127,6 +141,7 @@ export default class App extends Component {
               path="/entertainment"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="entertainment"
                   mode={this.state.mode}
                   country="in"
@@ -141,6 +156,7 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="technology"
                   mode={this.state.mode}
                   country="in"
@@ -155,6 +171,7 @@ export default class App extends Component {
               path="/sports"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="sports"
                   mode={this.state.mode}
                   country="in"
@@ -171,6 +188,7 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="health"
                   mode={this.state.mode}
                   country="in"
@@ -185,6 +203,7 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
+                  setProgress={this.setProgress}
                   key="science"
                   mode={this.state.mode}
                   country="in"
