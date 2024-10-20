@@ -75,7 +75,7 @@ export default class App extends Component {
           <LoadingBar
             color="#f11946"
             progress={this.state.progress}
-            height={"2.5px"}
+            height={"2.2px"}
           />
           <NavBar
             mode={this.state.mode}
@@ -96,7 +96,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="general"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="general"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -113,7 +113,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="general"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="general"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -129,7 +129,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="business"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="business"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -144,7 +144,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="entertainment"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="entertainment"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -159,7 +159,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="technology"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="technology"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -174,7 +174,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="sports"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="sports"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -191,7 +191,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="health"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="health"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
@@ -206,7 +206,7 @@ export default class App extends Component {
                   setProgress={this.setProgress}
                   key="science"
                   mode={this.state.mode}
-                  country="in"
+                  country="us"
                   category="science"
                   modeText={this.state.modeText}
                   pageSize={this.pageSize}
